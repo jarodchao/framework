@@ -43,6 +43,10 @@ public class FrameworkBaseException extends RuntimeException {
                 MessageFormatter.arrayFormat(errorCode.getDesc(), fields).getMessage()));
     }
 
+    public FrameworkBaseException(ErrorInfo errorInfo) {
+        super(errorInfo.errorMessage());
+    }
+
     public FrameworkBaseException(ErrorInfo... errorInfos) {
 
         super(String.format(MULTIPLE_MESSAGE_FORMAT, StringUtils.join(ErrorInfo.combinedMessage(errorInfos), "\n")));

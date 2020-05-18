@@ -13,14 +13,18 @@
  * License for the specific language governing permissions and limitations
  * under the License.
  */
-package org.eleven1028.framework.exception;
+package org.eleven1028.framework;
+
+import org.eleven1028.framework.exception.ErrorInfo;
+import org.eleven1028.framework.exception.FrameworkBaseException;
 
 /**
- * @author: <a herf="matilto:jarodchao@126.com>jarod </a>
+ * @author: <a herf="mailto:jarodchao@126.com>jarod </a>
  * @date: 2020-05-18
  */
 @FunctionalInterface
-public interface ExceptionSupplier<T extends FrameworkBaseException> {
+public interface ExtendedExceptionSupplier<T extends FrameworkBaseException> {
 
-    T get(ErrorInfo... errorInfos);
+
+    T get(ErrorInfo errorInfo);
 }

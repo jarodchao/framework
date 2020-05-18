@@ -15,42 +15,39 @@
  */
 package org.eleven1028.framework.util.validate;
 
-import org.apache.commons.lang3.ArrayUtils;
+
+import org.eleven1028.framework.ExtendedExceptionSupplier;
+import org.eleven1028.framework.exception.ErrorCode;
 import org.eleven1028.framework.exception.ErrorInfo;
 import org.eleven1028.framework.exception.FrameworkBaseException;
+
+import java.util.function.Predicate;
 
 /**
  * @author: <a herf="mailto:jarodchao@126.com>jarod </a>
  * @date: 2020-05-15
  */
-public class FieldValidateExecutor<T extends FrameworkBaseException> {
+public class ExceptionTigger<T extends FrameworkBaseException> {
 
-    private FieldValidateExceptionSupplier<T> supplier;
+    private ExtendedExceptionSupplier<T> supplier;
 
-    public static <T extends FrameworkBaseException> FieldValidateExecutor of(FieldValidateExceptionSupplier<T> supplier) {
-        return new FieldValidateExecutor<>(supplier);
+    public static <T extends FrameworkBaseException> ExceptionTigger<T> of(ExtendedExceptionSupplier<T> supplier) {
+        return new ExceptionTigger<>(supplier);
     }
 
-    public FieldValidateExecutor(FieldValidateExceptionSupplier<T> supplier) {
+    public ExceptionTigger(ExtendedExceptionSupplier<T> supplier) {
         this.supplier = supplier;
     }
 
-    public void execute(FieldValidator... fieldValidators) {
+    public <T extends Object> void tigger(ErrorInfo errorInfo, Predicate<T> predicate, T t) {
 
-        if (fieldValidators.length == 0) {
-            return;
+        if (predicate.test(t)) {
+            throw supplier.get(errorInfo);
         }
+    }
 
-        ErrorInfo[] errorInfos = new ErrorInfo[]{};
-        for (FieldValidator fieldValidator : fieldValidators) {
-            ArrayUtils.add(errorInfos, fieldValidator.validate());
-        }
-
-        if (errorInfos.length > 0) {
-
-            throw supplier.get(errorInfos);
-        }
-
+    public <T extends Object> void tigger(ErrorCode errorCode) {
+        throw supplier.get(ErrorInfo.of(errorCode));
     }
 
 }

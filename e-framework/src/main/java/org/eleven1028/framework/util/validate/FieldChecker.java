@@ -13,8 +13,11 @@
  * License for the specific language governing permissions and limitations
  * under the License.
  */
-package org.eleven1028.framework.exception;
+package org.eleven1028.framework.util.validate;
 
+import org.eleven1028.framework.exception.ErrorCode;
+import org.eleven1028.framework.exception.ErrorInfo;
+import org.eleven1028.framework.exception.FrameworkErrorCode;
 import org.eleven1028.framework.util.validate.FieldLengthComparator;
 
 import java.util.Comparator;
@@ -24,7 +27,7 @@ import java.util.function.Predicate;
  * @author: <a herf="mailto:jarodchao@126.com>jarod </a>
  * @date: 2020-05-18
  */
-public class ExceptionChecker {
+public class FieldChecker {
 
     public static <T extends Object> ErrorInfo check(final ErrorCode errorCode, Predicate<T> predicate, T t) {
 
