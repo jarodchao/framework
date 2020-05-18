@@ -13,7 +13,7 @@
  * License for the specific language governing permissions and limitations
  * under the License.
  */
-package org.eleven2018.framework.exception;
+package org.eleven1028.framework.exception;
 
 
 import org.apache.commons.lang3.StringUtils;

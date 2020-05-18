@@ -13,9 +13,10 @@
  * License for the specific language governing permissions and limitations
  * under the License.
  */
-package org.eleven2018.framework.exception;
+package org.eleven1028.framework.exception;
 
-import org.eleven2018.finance.order.infrastructure.util.validate.FieldLengthComparator;
+
+import org.eleven1028.framework.util.validate.FieldLengthComparator;
 
 import java.util.Comparator;
 import java.util.function.Predicate;
@@ -27,26 +28,26 @@ import java.util.function.Predicate;
 public class ExceptionTigger {
 
 
-    public static <T extends Object> void tigger(org.eleven2018.finance.order.infrastructure.exception.BizErrorCode errorCode, Predicate<T> predicate, T t) {
+    public static <T extends Object> void tigger(ErrorCode errorCode, Predicate<T> predicate, T t) {
 
         if (predicate.test(t)) {
-            throw new FinanceBizException(errorCode);
+            throw new FrameworkBaseException(errorCode);
         }
     }
 
-    public static <T extends Object> void tigger(org.eleven2018.finance.order.infrastructure.exception.BizErrorCode errorCode, Comparator<T> comparator, T t1, T t2) {
+    public static <T extends Object> void tigger(ErrorCode errorCode, Comparator<T> comparator, T t1, T t2) {
 
         if (comparator.compare(t1, t2) != 0) {
-            throw new FinanceBizException(errorCode);
+            throw new FrameworkBaseException(errorCode);
         }
     }
 
-    public static void tigger(org.eleven2018.finance.order.infrastructure.exception.BizErrorCode errorCode, FieldLengthComparator<String> comparator,
+    public static void tigger(ErrorCode errorCode, FieldLengthComparator<String> comparator,
                               String str, Integer... lengths) {
 
         for (Integer length : lengths) {
             if (!comparator.compare(str, length)) {
-                throw new FinanceBizException(errorCode, length);
+                throw new FrameworkBaseException(errorCode, length);
             }
         }
 

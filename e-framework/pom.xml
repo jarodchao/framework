@@ -4,11 +4,13 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>org.example</groupId>
+    <groupId>org.eleven1028</groupId>
     <artifactId>e-framework</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>1.0.1</version>
+    <packaging>jar</packaging>
 
     <properties>
+        <java.version>13</java.version>
         <commons.lang3.version>3.10</commons.lang3.version>
         <guave.version>29.0-jre</guave.version>
         <slf4j.api.version>1.7.25</slf4j.api.version>
@@ -40,6 +42,23 @@
             <version>${lombok.version}</version>
         </dependency>
     </dependencies>
+
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.1</version>
+                <configuration>
+                    <encoding>UTF-8</encoding>
+                    <target>13</target>
+                    <source>13</source>
+                </configuration>
+            </plugin>
+
+        </plugins>
+    </build>
 
 
 </project>

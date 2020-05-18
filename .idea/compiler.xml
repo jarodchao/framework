@@ -11,10 +11,9 @@
         <module name="batch-framework" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
+    <bytecodeTargetLevel target="13">
       <module name="batch-framework" target="1.5" />
-      <module name="e-framework" target="1.5" />
-      <module name="eleven2018-framework" target="1.5" />
+      <module name="e-framework" target="13" />
       <module name="ms-framework" target="1.5" />
     </bytecodeTargetLevel>
   </component>

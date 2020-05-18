@@ -13,23 +13,15 @@
  * License for the specific language governing permissions and limitations
  * under the License.
  */
-package org.eleven2018.framework.exception;
+package org.eleven1028.framework.util.validate;
+
+import org.eleven1028.framework.exception.ErrorInfo;
 
 /**
- * @author: <a herf="matilto:jarodchao@126.com>jarod </a>
- * @date: 2020-05-15
+ * @author: <a herf="mailto:jarodchao@126.com>jarod </a>
+ * @date: 2020-05-18
  */
-public interface ErrorCode {
+public interface FieldValidator {
 
-    /**
-     * 获取错误码
-     * @return 错误码
-     */
-    String getCode();
-
-    /**
-     * 获取错误描述
-     * @return 错误描述
-     */
-    String getDesc();
+    ErrorInfo[] validate();
 }

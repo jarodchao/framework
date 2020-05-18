@@ -13,9 +13,9 @@
  * License for the specific language governing permissions and limitations
  * under the License.
  */
-package org.eleven2018.framework.exception;
+package org.eleven1028.framework.exception;
 
-import org.eleven2018.finance.order.infrastructure.util.validate.FieldLengthComparator;
+import org.eleven1028.framework.util.validate.FieldLengthComparator;
 
 import java.util.Comparator;
 import java.util.function.Predicate;
@@ -26,34 +26,35 @@ import java.util.function.Predicate;
  */
 public class ExceptionChecker {
 
-    public static <T extends Object> org.eleven2018.finance.order.infrastructure.exception.BizErrorCode check(final org.eleven2018.finance.order.infrastructure.exception.BizErrorCode errorCode, Predicate<T> predicate, T t) {
+    public static <T extends Object> ErrorInfo check(final ErrorCode errorCode, Predicate<T> predicate, T t) {
 
         if (predicate.test(t)) {
-            return errorCode;
+            return ErrorInfo.of(errorCode);
         }
 
-        return FrameworkErrorCode.NO_EXCEPTION_TRIGGER;
+        return ErrorInfo.of(FrameworkErrorCode.NO_EXCEPTION_TRIGGER);
     }
 
-    public static <T extends Object> org.eleven2018.finance.order.infrastructure.exception.BizErrorCode check(final org.eleven2018.finance.order.infrastructure.exception.BizErrorCode errorCode, Comparator<T> comparator, T t1, T t2) {
+    public static <T extends Object> ErrorInfo check(final ErrorCode errorCode, Comparator<T> comparator, T t1, T t2) {
 
         if (comparator.compare(t1, t2) != 0) {
-            return errorCode;
+            return ErrorInfo.of(errorCode);
         }
 
-        return FrameworkErrorCode.NO_EXCEPTION_TRIGGER;
+        return ErrorInfo.of(FrameworkErrorCode.NO_EXCEPTION_TRIGGER);
+
     }
 
-    public static org.eleven2018.finance.order.infrastructure.exception.BizErrorCode check(final org.eleven2018.finance.order.infrastructure.exception.BizErrorCode errorCode, FieldLengthComparator<String> comparator,
+    public static ErrorInfo check(final ErrorCode errorCode, FieldLengthComparator<String> comparator,
                                                                                            String str, Integer... lengths) {
 
         for (Integer length : lengths) {
             if (!comparator.compare(str, length)) {
-                return errorCode;
+                return ErrorInfo.of(errorCode);
             }
         }
 
-        return FrameworkErrorCode.NO_EXCEPTION_TRIGGER;
+        return ErrorInfo.of(FrameworkErrorCode.NO_EXCEPTION_TRIGGER);
 
     }
 }
