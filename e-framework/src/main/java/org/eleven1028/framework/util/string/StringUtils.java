@@ -48,4 +48,8 @@ public class StringUtils {
         return left == null || "".equals(left);
     }
 
+    public static boolean nonEmpty(String left) {
+        return left != null;
+    }
+
 }

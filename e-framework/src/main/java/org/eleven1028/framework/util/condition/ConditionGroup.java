@@ -44,44 +44,47 @@ public class ConditionGroup {
 
     public ConditionGroup condition(Condition condition) {
 
-        int insertIndex = conditions.length == 0 ? 0 : conditions.length - 1;
-        ArrayUtils.insert(insertIndex, conditions, condition);
+        int insertIndex = conditions.length == 0 ? 0 : conditions.length;
+        conditions = ArrayUtils.insert(insertIndex, conditions, condition);
         return this;
     }
 
     public ConditionGroup and() {
 
-        int insertIndex = logicalOperators.length == 0 ? 0 : logicalOperators.length - 1;
-        ArrayUtils.insert(insertIndex, logicalOperators, "&&");
+        int insertIndex = logicalOperators.length == 0 ? 0 : logicalOperators.length;
+        logicalOperators = ArrayUtils.insert(insertIndex, logicalOperators, "&&");
         return this;
     }
 
     public ConditionGroup or() {
 
-        int insertIndex = logicalOperators.length == 0 ? 0 : logicalOperators.length - 1;
-        ArrayUtils.insert(insertIndex, logicalOperators, "||");
+        int insertIndex = logicalOperators.length == 0 ? 0 : logicalOperators.length;
+        logicalOperators = ArrayUtils.insert(insertIndex, logicalOperators, "||");
         return this;
     }
 
     public boolean run() {
 
-        StringBuilder expression = new StringBuilder();
+        StringBuilder expression = new StringBuilder("( ");
 
         Iterator<Condition> conditionIterator = Arrays.asList(conditions).iterator();
         Iterator<String> operators = Arrays.asList(logicalOperators).iterator();
 
         while (conditionIterator.hasNext()) {
-            Condition group = conditionIterator.next();
+            Condition condition = conditionIterator.next();
 
-            expression.append(group.run());
+            expression.append(condition.run());
 
             if (operators.hasNext()) {
-                expression.append(" " + operators.next());
+                expression.append(" " + operators.next() + " ");
             }
         }
 
-        AviatorEvaluator.execute(expression.toString());
+        expression.append(" )");
 
-        return false;
+        String executeExpression = expression.toString();
+        System.out.println("ConditionGroup Expression: " + executeExpression);
+        return (boolean) AviatorEvaluator.execute(executeExpression);
     }
+
 }

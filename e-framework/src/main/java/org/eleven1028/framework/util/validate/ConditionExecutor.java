@@ -38,7 +38,7 @@ public class ConditionExecutor {
         return new ConditionExecutor(rules);
     }
 
-    public void execute() {
+    public boolean execute() {
 
         StringBuilder expression = new StringBuilder();
 
@@ -51,10 +51,12 @@ public class ConditionExecutor {
             expression.append(group.run());
 
             if (operators.hasNext()) {
-                expression.append(" " + operators.next());
+                expression.append(" " + operators.next() + " ");
             }
         }
 
-        AviatorEvaluator.execute(expression.toString());
+        String executeExpression = expression.toString();
+        System.out.println("ConditionExecutor Expression: " + executeExpression);
+        return (boolean) AviatorEvaluator.execute(executeExpression);
     }
 }

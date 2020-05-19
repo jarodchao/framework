@@ -33,22 +33,22 @@ public class ConditionalExecutionRules {
 
     public ConditionalExecutionRules condition(ConditionGroup conditionGroup) {
 
-        int insertIndex = conditionGroups.length == 0 ? 0 : conditionGroups.length - 1;
-        ArrayUtils.insert(insertIndex, conditionGroups, conditionGroup);
+        int insertIndex = conditionGroups.length == 0 ? 0 : conditionGroups.length;
+        conditionGroups = ArrayUtils.insert(insertIndex, conditionGroups, conditionGroup);
         return this;
     }
 
     public ConditionalExecutionRules and() {
 
-        int insertIndex = logicalOperators.length == 0 ? 0 : logicalOperators.length - 1;
-        ArrayUtils.insert(insertIndex, logicalOperators, "&&");
+        int insertIndex = logicalOperators.length == 0 ? 0 : logicalOperators.length;
+        logicalOperators = ArrayUtils.insert(insertIndex, logicalOperators, "&&");
         return this;
     }
 
     public ConditionalExecutionRules or() {
 
-        int insertIndex = logicalOperators.length == 0 ? 0 : logicalOperators.length - 1;
-        ArrayUtils.insert(insertIndex, logicalOperators, "||");
+        int insertIndex = logicalOperators.length == 0 ? 0 : logicalOperators.length;
+        logicalOperators = ArrayUtils.insert(insertIndex, logicalOperators, "||");
         return this;
     }
 
