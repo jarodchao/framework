@@ -16,7 +16,7 @@
 package org.eleven1028.framework.util.validate;
 
 
-import org.eleven1028.framework.ExtendedExceptionSupplier;
+import org.eleven1028.framework.exception.ExtendedExceptionSupplier;
 import org.eleven1028.framework.exception.ErrorCode;
 import org.eleven1028.framework.exception.ErrorInfo;
 import org.eleven1028.framework.exception.FrameworkBaseException;

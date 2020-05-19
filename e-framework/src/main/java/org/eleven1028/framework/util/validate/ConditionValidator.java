@@ -13,18 +13,25 @@
  * License for the specific language governing permissions and limitations
  * under the License.
  */
-package org.eleven1028.framework;
+package org.eleven1028.framework.util.validate;
 
+import lombok.AllArgsConstructor;
 import org.eleven1028.framework.exception.ErrorInfo;
-import org.eleven1028.framework.exception.FrameworkBaseException;
+import org.eleven1028.framework.util.condition.Condition;
 
 /**
  * @author: <a herf="mailto:jarodchao@126.com>jarod </a>
- * @date: 2020-05-18
+ * @date: 2020-05-19
  */
-@FunctionalInterface
-public interface ExtendedExceptionSupplier<T extends FrameworkBaseException> {
+@AllArgsConstructor
+public class ConditionValidator {
 
+    private Condition condition;
 
-    T get(ErrorInfo errorInfo);
+    private ErrorInfo errorInfo;
+
+    public ErrorInfo run() {
+
+        return condition.runOperations() ? errorInfo : null;
+    }
 }
