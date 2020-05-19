@@ -35,12 +35,13 @@ public class AmountEqualityValidator extends ConditionValidator  {
     public static AmountEqualityValidator of(ErrorInfo errorInfo, BigDecimal left, BigDecimal right) {
 
         ConditionalOperations operations =
-                objects -> AmountUtils.equalsOther((BigDecimal) objects[0], (BigDecimal) objects[1]);
+                objects -> AmountUtils.equalsOther(AmountUtils.toAmount(objects[0]),AmountUtils.toAmount(objects[1]));
 
         return new AmountEqualityValidator(Condition.of(operations, left, right), errorInfo);
     }
 
     public static AmountEqualityValidator of(ErrorInfo errorInfo, BigDecimal left) {
+
         ConditionalOperations operations = objects -> AmountUtils.isZero(left);
 
         return new AmountEqualityValidator(Condition.of(operations, left), errorInfo);

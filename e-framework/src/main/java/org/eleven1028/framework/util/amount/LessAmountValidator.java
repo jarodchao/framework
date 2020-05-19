@@ -35,18 +35,18 @@ public class LessAmountValidator extends ConditionValidator {
     public static LessAmountValidator of(ErrorInfo errorInfo, BigDecimal left, BigDecimal right) {
 
         ConditionalOperations operations =
-                objects -> AmountUtils.lessOther((BigDecimal)objects[0],(BigDecimal)objects[1]);
+                objects -> AmountUtils.lessOther(AmountUtils.toAmount(objects[0]),AmountUtils.toAmount(objects[1]));
 
-        return new LessAmountValidator(Condition.of(operations, errorInfo, left, right));
+        return new LessAmountValidator(Condition.of(operations, left, right));
 
     }
 
     public static LessAmountValidator of(ErrorInfo errorInfo, BigDecimal left) {
 
         ConditionalOperations operations =
-                objects -> AmountUtils.lessZero((BigDecimal)objects[0]);
+                objects -> AmountUtils.lessZero(AmountUtils.toAmount(objects[0]));
 
-        return new LessAmountValidator(Condition.of(operations, errorInfo, left));
+        return new LessAmountValidator(Condition.of(operations, left));
 
     }
 }

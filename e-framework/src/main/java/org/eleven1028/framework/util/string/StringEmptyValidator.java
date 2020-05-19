@@ -13,30 +13,29 @@
  * License for the specific language governing permissions and limitations
  * under the License.
  */
-package org.eleven1028.framework.util.amount;
+package org.eleven1028.framework.util.string;
 
 import org.eleven1028.framework.exception.ErrorInfo;
 import org.eleven1028.framework.util.condition.Condition;
 import org.eleven1028.framework.util.condition.ConditionalOperations;
 import org.eleven1028.framework.util.validate.ConditionValidator;
 
-import java.math.BigDecimal;
-
 /**
  * @author: <a herf="mailto:jarodchao@126.com>jarod </a>
  * @date: 2020-05-19
  */
-public class GreaterAmountValidator extends ConditionValidator {
+public class StringEmptyValidator extends ConditionValidator {
 
-    public GreaterAmountValidator(Condition condition) {
+    public StringEmptyValidator(Condition condition) {
         super(condition);
     }
 
-    public static GreaterAmountValidator of(ErrorInfo errorInfo, BigDecimal left, BigDecimal right) {
+    public static StringEmptyValidator of(ErrorInfo errorInfo, String left) {
 
-        ConditionalOperations operations =
-                objects -> AmountUtils.greaterOther(AmountUtils.toAmount(objects[0]), AmountUtils.toAmount(objects[1]));
+        ConditionalOperations operations = objects -> StringUtils.isEmpty((String) objects[0]);
 
-        return new GreaterAmountValidator(Condition.of(operations, left, right));
+        return new StringEmptyValidator(Condition.of(operations, left));
     }
+
+
 }

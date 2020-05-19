@@ -40,7 +40,7 @@ public class EmptyValidator extends ConditionValidator {
 
         ConditionalOperations operations = objects -> Objects.isNull(objects[0]);
 
-        return new EmptyValidator(Condition.of(operations, errorInfo, object));
+        return new EmptyValidator(Condition.of(operations, object));
 
     }
 }

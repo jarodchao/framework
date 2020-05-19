@@ -20,8 +20,6 @@ import org.eleven1028.framework.util.condition.Condition;
 import org.eleven1028.framework.util.condition.ConditionalOperations;
 import org.eleven1028.framework.util.validate.ConditionValidator;
 
-import java.math.BigDecimal;
-
 /**
  * @author: <a herf="mailto:jarodchao@126.com>jarod </a>
  * @date: 2020-05-19
@@ -32,19 +30,19 @@ public class ObjectEqualityValidator<T> extends ConditionValidator {
         super(condition);
     }
 
-    public static <T> ObjectEqualityValidator<T> of(ErrorInfo errorInfo, T t1, T t2) {
+    public static <T> ObjectEqualityValidator<T> of(ErrorInfo errorInfo, T left, T right) {
 
         if (errorInfo == null) {
             throw new IllegalArgumentException("ErrorInfo can not be null.");
         }
 
-        if (t1 == null || t2 == null) {
-            throw new IllegalArgumentException("T1 and T2 can not be null.");
+        if (left == null || right == null) {
+            throw new IllegalArgumentException("Left and Right can not be null.");
         }
 
         ConditionalOperations operations = os -> os[0].equals(os[1]);
 
-        return new ObjectEqualityValidator(Condition.of(operations, errorInfo, t1, t2));
+        return new ObjectEqualityValidator(Condition.of(operations, errorInfo, left, right));
 
     }
 }

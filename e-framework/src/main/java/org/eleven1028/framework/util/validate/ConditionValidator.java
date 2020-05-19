@@ -16,6 +16,7 @@
 package org.eleven1028.framework.util.validate;
 
 import lombok.AllArgsConstructor;
+import lombok.Getter;
 import org.eleven1028.framework.exception.ErrorInfo;
 import org.eleven1028.framework.util.condition.Condition;
 
@@ -26,9 +27,14 @@ import org.eleven1028.framework.util.condition.Condition;
 @AllArgsConstructor
 public class ConditionValidator {
 
+    @Getter
     private Condition condition;
 
     private ErrorInfo errorInfo;
+
+    public ConditionValidator(Condition condition) {
+        this.condition = condition;
+    }
 
     public ErrorInfo run() {
 

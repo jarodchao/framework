@@ -41,4 +41,8 @@ public class StringUtils {
         return length < right.length();
     }
 
+    public static boolean isEmpty(String left) {
+        return left == null || "".equals(left);
+    }
+
 }

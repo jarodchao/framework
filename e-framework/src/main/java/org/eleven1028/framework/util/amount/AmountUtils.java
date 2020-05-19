@@ -48,4 +48,8 @@ public class AmountUtils {
     public static boolean greaterOther(BigDecimal left, BigDecimal right) {
         return left.compareTo(right) > 0 ? true : false;
     }
+
+    public static BigDecimal toAmount(Object object) {
+        return new BigDecimal(object.toString());
+    }
 }
