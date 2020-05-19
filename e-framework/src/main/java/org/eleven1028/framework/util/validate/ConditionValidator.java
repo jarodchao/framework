@@ -32,6 +32,6 @@ public class ConditionValidator {
 
     public ErrorInfo run() {
 
-        return condition.runOperations() ? errorInfo : null;
+        return condition.run() ? errorInfo : null;
     }
 }

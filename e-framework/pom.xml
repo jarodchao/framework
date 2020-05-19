@@ -15,6 +15,7 @@
         <guave.version>29.0-jre</guave.version>
         <slf4j.api.version>1.7.25</slf4j.api.version>
         <lombok.version>1.18.6</lombok.version>
+        <aviator.version>5.0.0</aviator.version>
     </properties>
 
     <dependencies>
@@ -40,6 +41,12 @@
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <version>${lombok.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.googlecode.aviator</groupId>
+            <artifactId>aviator</artifactId>
+            <version>${aviator.version}</version>
         </dependency>
     </dependencies>
 

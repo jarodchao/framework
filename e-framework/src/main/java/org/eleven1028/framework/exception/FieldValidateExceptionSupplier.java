@@ -13,14 +13,17 @@
  * License for the specific language governing permissions and limitations
  * under the License.
  */
-package org.eleven1028.framework.util.validate;
+package org.eleven1028.framework.exception;
+
+import org.eleven1028.framework.exception.ErrorInfo;
+import org.eleven1028.framework.exception.FrameworkBaseException;
 
 /**
  * @author: <a herf="matilto:jarodchao@126.com>jarod </a>
- * @date: 2020-05-15
+ * @date: 2020-05-18
  */
 @FunctionalInterface
-public interface FieldLengthComparator<T> {
+public interface FieldValidateExceptionSupplier<T extends FrameworkBaseException> {
 
-    boolean compare(T t, int length);
+    T get(ErrorInfo... errorInfos);
 }

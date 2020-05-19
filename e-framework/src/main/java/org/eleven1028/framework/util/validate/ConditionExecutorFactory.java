@@ -15,13 +15,16 @@
  */
 package org.eleven1028.framework.util.validate;
 
-import org.eleven1028.framework.exception.FrameworkBaseException;
-
 /**
- * @author: <a herf="matilto:jarodchao@126.com>jarod </a>
- * @date: 2020-05-15
+ * @author: <a herf="mailto:jarodchao@126.com>jarod </a>
+ * @date: 2020-05-19
  */
-public interface DomainValidator {
+public class ConditionExecutorFactory {
 
-    void validate() throws FrameworkBaseException;
+
+    public static ConditionExecutorBuilder get() {
+
+        return new ConditionExecutorBuilder();
+
+    }
 }

@@ -15,13 +15,15 @@
  */
 package org.eleven1028.framework.util.validate;
 
-import org.eleven1028.framework.exception.ErrorInfo;
-
 /**
- * @author: <a herf="mailto:jarodchao@126.com>jarod </a>
- * @date: 2020-05-18
+ * @author: <a herf="matilto:jarodchao@126.com>jarod </a>
+ * @date: 2020-05-15
  */
-public interface FieldValidator {
+public interface Validatable {
 
-    ErrorInfo[] validate();
+
+    /**
+     * 验证领域对象
+     */
+    void validate();
 }

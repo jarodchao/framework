@@ -45,7 +45,7 @@ public class Condition {
         return new Condition(operations, objects);
     }
 
-    public boolean runOperations() {
+    public boolean run() {
         return operations.operate(objects);
     }
 }
