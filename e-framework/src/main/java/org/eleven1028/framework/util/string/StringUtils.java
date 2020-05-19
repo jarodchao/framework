@@ -22,6 +22,9 @@ package org.eleven1028.framework.util.string;
 public class StringUtils {
 
     public static boolean isEqual(String left, String right) {
+        if (left == null || right == null) {
+            return false;
+        }
         return left.equals(right);
     }
 
